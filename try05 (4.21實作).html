@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 要求:
+- 1.2026年10月月份生日 
+– 2.前後月的連接日期需標示不同顏色
+– 3.生日當日用標出顏色註記
+– 4.六日需標出不同顏色區別
+– 5.下方需要放一張想要禮物圖片，並連接到購物網站。-->
+
+<body>
+    <h1>
+        <span class="title">生日月分2026 October.</span>
+    </h1>
+    <!-- 在html部分定義標題，方便css後續美化 -->
+
+    <table class="styled-table">
+        <!-- 同上 -->
+        <tr>
+            <th>sun.</th>
+            <th>mon.</th>
+            <th>tue.</th>
+            <th>wed.</th>
+            <th>thu.</th>
+            <th>fri.</th>
+            <th>sat.</th>
+        </tr>
+        <!-- 用<th>標示，讓css知道這排是標題，且後續可與<td>做出區隔，方便後面定義 -->
+        <tr>
+            <td><span class="past month">27</span></td>
+            <td><span class="past month">28</span></td>
+            <td><span class="past month">29</span></td>
+            <td><span class="past month">30</span></td>
+            <td>1</td>
+            <td>2</td>
+            <td><span class="holiday">3</span></td>
+            <!-- 為了更改特定數字顏色，用不同字詞去設定變數，方便後續設定css -->
+        </tr>
+        <tr>
+            <td><span class="holiday">4</span></td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td><span class="holiday">10</span></td>
+        </tr>
+        <tr>
+            <td><span class="holiday">11</span></td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td><span class="holiday">17</span></td>
+        </tr>
+        <tr>
+            <td><span class="holiday">18</span></td>
+            <td>19</td>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td><span class="holiday">24</span></td>
+        </tr>
+        <tr>
+            <td><span class="holiday">25</span></td>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <!-- 以上同上 -->
+            <td><span class="birthday">29</span><br><img src="./cake.jpg!con" alt="cake" width="30" height="30"></td>
+            <!-- 一樣有設定字詞，另外還加上圖片、並用<br>換行，以及設定圖片大小 -->
+            <td>30</td>
+            <td>31</td>
+        </tr>
+    </table>
+    </hr>
+
+    <h1>
+        <span class="title">Wish List...</span>
+    </h1>
+    <!-- 許願文字 -->
+
+    <div class="marquee-wrapper">
+        <div class="marquee-content">買禮物給我!買禮物給我!買禮物給我!拜託拜託拜託!</div>
+    </div>
+    <!--marquee-wrapper是外框(外層)，marquee-content是動畫呈現(內層)  -->
+
+    <p style="text-align: center;"><a
+            href="https://www.playstation.com/zh-hant-tw/games/death-stranding-2-on-the-beach/" target="_blank"><img
+                src="https://p2.bahamut.com.tw/B/2KU/68/cfe743b8b94a7df45ecd6e0e391te2c5.JPG?v=1741568573585" alt=""
+                width="400" height="auto"></a></p>
+    <!-- 用<a>上網址、裡面加上targrt讓超連結透過分頁開啟，img加上圖片，alt設定圖片大小 -->
+
+    <div class="marquee-wrapper">
+        <div class="marquee-content">買禮物給我!買禮物給我!買禮物給我!拜託拜託拜託!</div>
+    </div>
+
+    <style>
+        .marquee-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            padding: 5px 0;
+
+        }
+
+        /* 設定外框的樣式，讓它不會超出範圍 */
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 10s linear infinite;
+            font-size: 12px;
+            font-family: "微軟正黑體";
+            color: skyblue;
+        }
+
+        /* 讓文字從右邊跑到左邊 */
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0%)
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* 設定無限循環 */
+
+        .birthday {
+            color: rgb(216, 17, 199);
+            ;
+        }
+
+        .holiday {
+            color: rgb(241, 99, 34);
+        }
+
+        .past.month {
+            color: rgb(179, 179, 179);
+        }
+
+        /*設定字詞各自的顏色  */
+
+        h1 {
+            text-align: center;
+        }
+
+        /* 把許願文字置中 */
+
+        .title {
+            font-size: 25px;
+            color: skyblue;
+            font-family: "微軟正黑體";
+            font-style: bold;
+        }
+
+        /* 設定標題文字大小、顏色、字體、並加粗體 */
+
+        .styled-table {
+            width: 400px;
+            height: 300px;
+            background-color: white;
+            /* 背景白色 */
+            margin: 0 auto;
+            font-size: 10px;
+            border-radius: 12px;
+            /* 四角圓角 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 柔和陰影 */
+            border: 2px solid rgb(99, 94, 94);
+            /* 黑色邊框 */
+            overflow: hidden;
+            border-spacing: 0;
+            /* 讓表格邊界無間隔 */
+        }
+
+        /* 陰影、圓角、邊框不重疊 */
+
+        .styled-table tr:nth-child(2),
+        .styled-table tr:nth-child(4),
+        .styled-table tr:nth-child(6) {
+            background-color: rgb(245, 245, 234);
+        }
+
+        /* 設定指定區域的背景顏色 */
+
+        .styled-table tr:nth-child(3),
+        .styled-table tr:nth-child(5) {
+            background-color: rgb(226, 236, 243);
+        }
+
+        /* 同上 */
+
+        .styled-table th {
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+            ;
+        }
+
+        /* 設定標題置中並加上框線 */
+
+        .styled-table td {
+            border: 1px solid black;
+            padding: 4px;
+            text-align: right;
+            vertical-align: top;
+        }
+
+        /* 把表格數字靠右上顯示 */
+    </style>
+</body>
+
+</html>
